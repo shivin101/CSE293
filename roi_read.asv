@@ -4,7 +4,7 @@ close all;
 
 tic
 
-ids=[2,8,4];
+ids=[2,8];
 
 root = 'C:\Users\shivi\OneDrive\Documents\Courses\CSE293\M1-2\';
 ROI ={1,size(ids,2)};
@@ -64,7 +64,7 @@ disp('finding features');
 for i=1:size(img,2)
     
     views(i)=struct('desc',feature_arr{i},'img',max(img{i},[],3),'frame', ...
-        points_arr{i},'nfeature',size(feature_arr{i},2),'filename',file{i});
+        points_arr{i},'nfeature',size(feature_arr{i},2),'filename',);
 end
 pMatch = runGraphMatchBatch(views,'all',[],'wEdge', 0);
 C = [];

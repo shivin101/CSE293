@@ -5,7 +5,7 @@ clear all;
 close all;
 root = 'C:\Users\shivi\OneDrive\Documents\Courses\CSE293\';
 dir = '\M1-2';
-img_name = join([root,dir,'\KA0013_180115_001_001_summed_50.tif']);
+img_name = join([root,dir,'\KA0013_180106_001_001_summed_50.tif']);
 tiff_info = imfinfo(img_name); % return tiff structure, one element per image
 tiff_stack = imread(img_name, 1) ; % read in first image
 %concatenate each successive tiff to tiff_stack
@@ -30,7 +30,7 @@ for k=1 : size_vol : size(tiff_info,1)-size_vol
     max_stack = cat(3,max_stack,temp_max);
 end
 
-save(join([root,dir,'\modified_stack10.mat']),'avg_stack','max_stack');
+save(join([root,dir,'\modified_stack1.mat']),'avg_stack','max_stack');
 % for ii = 1 : size(avg_stack, 3)
 %     imwrite(avg_stack(:,:,ii) , join([root,dir,'\avg_stack.tif']) , 'WriteMode' , 'append') ;
 % end

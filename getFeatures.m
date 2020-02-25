@@ -1,22 +1,24 @@
-function [features,points]= getFeatures(img,ROI,feature_type)
+function [features,points]= getFeatures(img,feature_type)
 
 % img = linearize_val(img);
 % img = linearize_val(normalize(double(img)));
 % disp(max(img(:)));
 % disp(min(img(:)));
 
-mid_p = [];
-feat_size = 11;
-for i=1:size(ROI,2)
-   points=ROI{i};
-   mid_p = [mid_p;[mean(points),feat_size,0]];
-   
-end
+
+
+sample_factor=200;
 % disp(size(mid_p));
 if feature_type=='SIFT'
-    [points,features]=vl_sift(single(img),'frames',mid_p','orientations');
-    points = points';
-    features = features';
+    binSize = 25 ;
+    magnif = 3 ;
+%     Is = vl_imsmooth(single(img), sqrt((binSize/magnif)^2 - .25)) ;
+    
+    Is = zscore(single(img));
+  
+    [points,features] = vl_dsift(single(Is), 'size', binSize) ;
+    points = downsample(points',sample_factor);
+    features = downsample(features',sample_factor);
 else
     [features,points]=extractFeatures(img,uint32(mid_p),'Method',feature);
 end
