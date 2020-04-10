@@ -26,7 +26,7 @@ disp('extracted features 2');
 disp('finding corresp features');
 disp(size(features1));
 % matches = matchFeatures(features1,features2,'MatchThreshold',5.0,'Method','Approximate');
-[matches, scores] = vl_ubcmatch(features1', features2',1.3) ;
+[matches, scores] = vl_ubcmatch(features1', features2',1.1) ;
 matchedPoints1 = points1(matches(1,:),1:2);
 matchedPoints2 = points2(matches(2,:),1:2);
 I1 = max(img1,[],3);

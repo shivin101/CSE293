@@ -1,4 +1,4 @@
-function [features,points]= getFeaturesROI(img,ROI,feature_type)
+function [features,points,mid_p]= getFeaturesROI(img,ROI,feature_type)
 
 % img = linearize_val(img);
 % img = linearize_val(normalize(double(img)));
